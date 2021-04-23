@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwalter </var/mail/mwalter>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 12:01:05 by mwalter           #+#    #+#             */
-/*   Updated: 2021/04/23 14:39:07 by mwalter          ###   ########.fr       */
+/*   Created: 2021/04/23 14:40:52 by mwalter           #+#    #+#             */
+/*   Updated: 2021/04/23 15:02:46 by mwalter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	size_t	i;
+	size_t	min_len;
 	char	*ret;
-	int		len;
 
-	len = ft_strlen(str);
-	ret = malloc(sizeof(char) * len + 1);
-	if (NULL == ret)
-		return (NULL);
-	len = 0;
-	while (str[len])
+	if (!s || len <= 0 || start >= ft_strlen(s))
+		return (ft_strdup(""));
+	else
 	{
-		ret[len] = str[len];
-		len++;
+		min_len = ft_strlen(&s[start]);
+		if (min_len < len)
+			len = min_len;
+		ret = malloc(sizeof(*ret) * (len + 1));
+		if (!ret)
+			return (NULL);
+		i = start;
+		while (s[i] && (i - start) < len)
+		{
+			ret[i - start] = s[i];
+			i++;
+		}
+		ret[i - start] = '\0';
+		return (ret);
 	}
-	ret[len] = '\0';
-	return (ret);
 }
