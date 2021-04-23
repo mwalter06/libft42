@@ -6,7 +6,7 @@
 #    By: mwalter <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:41:49 by mwalter           #+#    #+#              #
-#    Updated: 2021/04/23 15:28:34 by mwalter          ###   ########.fr        #
+#    Updated: 2021/04/23 21:08:27 by mwalter          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,23 @@ SRC =	 ft_strlen.c \
 		 ft_putchar_fd.c \
 		 ft_putstr_fd.c \
 		 ft_putnbr_fd.c \
+		 ft_putendl_fd.c \
+
+# BONUS FILES
+SRC_BONUS = ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
 
 # OBJECT FILES
 OBJ = $(SRC:.c=.o)
+
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 # C FLAGS
 CFLAGS = -Wall -Wextra -Werror -I. -c
@@ -71,6 +85,7 @@ fclean : clean
 
 re : fclean all
 
+bonus : $(OBJ) $(OBJ_BONUS)
+	ar rcs $(NAME) $^
 
-zip : $(OBJ) $(SRC)
-	tar -cvf projet.tar *.h $(SRC)
+.PHONY : all clean fclean re
