@@ -6,9 +6,9 @@ the project has gone to the reel so of course standard and ok on the following 3
 
 - Alelierv
 
--Jtoty
+- Jtoty
 
--Fiddling
+- Tripouille
 
 
 
